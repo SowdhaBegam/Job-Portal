@@ -1,0 +1,191 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+
+.signup-card {
+  width: min(800px, 95%);
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(18px);
+  color: white;
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.signup-back {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.10);
+  color: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.signup-head {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.signup-head h1 {
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.signup-head p {
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+.signup-role-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 16px 0 18px;
+}
+
+.tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.25s ease;
+}
+
+.tab.active {
+  background: rgba(34, 197, 94, 0.28);
+  border: 1px solid rgba(34, 197, 94, 0.45);
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.signup-form input,
+.signup-form select {
+  padding: 10px 14px;          /* ⬅ height reduce */
+  border-radius: 12px;        /* ⬅ slightly sharp */
+  font-size: 14px;            /* ⬅ clean text */
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  outline: none;
+  background: rgba(0, 0, 0, 0.22);
+  color: white;
+}
+
+
+.signup-btn {
+  margin-top: 6px;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #22c55e;
+  color: #0f172a;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.signup-foot {
+  margin-top: 16px;
+  text-align: center;
+  opacity: 0.9;
+}
+
+.signup-foot span {
+  font-weight: 900;
+  color: #bbf7d0;
+  cursor: pointer;
+}
+.signup-msg{
+  padding: 12px;
+  border-radius: 14px;
+  margin: 12px 0;
+  font-weight: 900;
+  text-align: center;
+}
+
+.signup-msg.success{
+  background: rgba(34,197,94,0.20);
+  border: 1px solid rgba(34,197,94,0.40);
+  color: white;
+}
+
+.signup-msg.error{
+  background: rgba(239,68,68,0.18);
+  border: 1px solid rgba(239,68,68,0.35);
+  color: white;
+}
+/* ✅ Wallpaper background like Login page */
+.signup-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+
+  /* ✅ same wallpaper */
+  background: url("../assets/loginwallpaper.png") center/cover no-repeat;
+}
+
+/* ✅ dark overlay for readability */
+.signup-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(222, 200, 200, 0);
+  z-index: 0;
+}
+
+/* ✅ Signup card should be above overlay */
+.signup-card {
+  width: min(650px, 95%);
+  position: relative;
+  z-index: 2;
+  animation: signupPop 0.6s ease;
+}
+
+/* ✅ popup animation */
+@keyframes signupPop {
+  from { transform: translateY(20px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* ✅ smooth hover animations for buttons */
+.signup-btn,
+.tab,
+.signup-back {
+  transition: 0.25s ease;
+}
+
+.signup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.35);
+}
+
+.tab:hover {
+  transform: translateY(-2px);
+}
+
+.signup-back:hover {
+  transform: translateY(-2px);
+}

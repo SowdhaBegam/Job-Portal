@@ -1,0 +1,350 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* FULL PAGE BACKGROUND (2nd image green theme feeling) */
+.role-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+
+  background: radial-gradient(circle at top, rgba(34,197,94,0.30), transparent 60%),
+              linear-gradient(120deg, #0f172a, #14532d);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft circles decoration */
+.role-page::before,
+.role-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.role-page::before {
+  width: 280px;
+  height: 280px;
+  top: 40px;
+  left: 40px;
+  background: #22c55e;
+}
+
+.role-page::after {
+  width: 320px;
+  height: 320px;
+  bottom: 60px;
+  right: 60px;
+  background: #16a34a;
+}
+
+.role-wrapper {
+  width: min(1050px, 100%);
+  position: relative;
+  z-index: 2;
+}
+
+/* HEADER */
+.role-header {
+  text-align: center;
+  margin-bottom: 28px;
+  animation: fadeDown 0.8s ease;
+}
+
+.role-header h1 {
+  font-size: 40px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.role-header p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+}
+
+/* GRID */
+.role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+/* ROLE BOX / CARD */
+.role-box {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 18px;
+  padding: 22px;
+  cursor: pointer;
+  text-align: left;
+  color: white;
+  backdrop-filter: blur(18px);
+
+  /* animations */
+  transform: translateY(30px);
+  opacity: 0;
+  animation: popUp 0.9s ease forwards;
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Stagger animation */
+.role-box:nth-child(1) { animation-delay: 0.05s; }
+.role-box:nth-child(2) { animation-delay: 0.15s; }
+.role-box:nth-child(3) { animation-delay: 0.25s; }
+
+/* Glow overlay effect */
+.role-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(34,197,94,0.35), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+/* Hover effect (attractive) */
+.role-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  border: 1px solid rgba(34, 197, 94, 0.50);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+.role-box:hover::before {
+  opacity: 1;
+}
+
+.role-box:active {
+  transform: scale(0.98);
+}
+
+/* TOP ROW */
+.role-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.role-icon {
+  font-size: 38px;
+}
+
+.role-tag {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+/* CONTENT */
+.role-box h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.role-box p {
+  font-size: 14px;
+  line-height: 1.6;
+  opacity: 0.88;
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA */
+.role-go {
+  margin-top: 16px;
+  font-weight: 700;
+  color: #bbf7d0;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.role-box:hover .role-go {
+  transform: translateX(8px);
+}
+
+/* FOOTER */
+.role-footer {
+  margin-top: 22px;
+  display: flex;
+  justify-content: center;
+}
+
+.role-back {
+  background: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.role-back:hover {
+  background: rgba(34, 197, 94, 0.20);
+  border: 1px solid rgba(34, 197, 94, 0.40);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .role-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role-header h1 {
+    font-size: 30px;
+  }
+}
+
+/* ANIMATIONS */
+@keyframes popUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0px); opacity: 1; }
+}
+
+@keyframes fadeDown {
+  from { transform: translateY(-18px); opacity: 0; }
+  to { transform: translateY(0px); opacity: 1; }
+}
+/* ================= LOGIN MODAL (ADDED) ================= */
+.login-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  animation: overlayFade 0.25s ease;
+}
+
+@keyframes overlayFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.login-modal {
+  width: min(420px, 92%);
+  border-radius: 18px;
+  padding: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  backdrop-filter: blur(18px);
+  color: white;
+  position: relative;
+
+  animation: modalPop 0.35s ease;
+}
+
+@keyframes modalPop {
+  from { transform: translateY(18px) scale(0.98); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.login-modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.login-modal-head h2 {
+  font-size: 22px;
+  font-weight: 900;
+}
+
+.login-close {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 16px;
+}
+
+.login-close:hover {
+  background: rgba(34, 197, 94, 0.18);
+  border: 1px solid rgba(34, 197, 94, 0.32);
+}
+
+.login-modal-sub {
+  margin-top: 8px;
+  opacity: 0.85;
+  font-size: 14px;
+}
+
+/* form */
+.login-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.login-modal-form input {
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  outline: none;
+  background: rgba(0, 0, 0, 0.25);
+  color: white;
+  font-size: 15px;
+}
+
+.login-modal-form input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.login-modal-form input:focus {
+  border: 1px solid rgba(34, 197, 94, 0.55);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.login-modal-btn {
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: #22c55e;
+  color: #0f172a;
+  font-weight: 900;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.login-modal-btn:active {
+  transform: scale(0.98);
+}
+
+.login-extra {
+  margin-top: 16px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.login-extra span {
+  color: #bbf7d0;
+  font-weight: 900;
+  cursor: pointer;
+}
